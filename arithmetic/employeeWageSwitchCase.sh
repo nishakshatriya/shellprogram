@@ -1,29 +1,36 @@
-#!/bin/bash/ -x
+#!/bin/bash/ 
 
-wage=100
-fullTimeHour=9
-partTimeHour=4
-empPresenty=$(( RANDOM%2 ))
-empType=$(( RANDOM%2 ))
-isPartTime=0
-isFullTime=1
-if [ $empPresenty -eq 0 ]
+WAGE_PER_HOUR=50
+6present=1
+absent=0
+day=0
+hour=0
+totalSalary=0
+randomTime=$(( RANDOM%2 ))
+if [ $randomTime -eq 1 ]
 then
-
-			case $empType in
-			$isPartTime)
-               Salary=$(( $partTimeHour * $wage )) ;;
-
-        	$isFullTime)
-               Salary=$(( $wage * $fullTimeHour )) ;;
-
-	 					 *)
-					Salary=0
-		esac
-	echo "salary is: $Salary"
+	workingHour=8
 else
-	echo "Employee is Absent"
+	workingHour=4
 fi
+while [[ hour -le 50 && day -le 20 ]]
+do
+	EmpWorkingHour=$workingHour
+	randomPresent=$((RANDOM%2))
+	case $randomPresent in
+	$present)
+		workingHour=$EmpWorkingHour
+		hour=$(($hour+$workingHour))
+	;;
+	$absent)
+	;;
+	esac
+dailySalary=$(($workingHour * $WAGE_PER_HOUR))
+totalSalary=$(($totalSalary + $dailySalary))
+day=$(($day+1))
+hour=$(($hour+1))
+done
+echo "total salary is--     $totalSalary"
 
 
 

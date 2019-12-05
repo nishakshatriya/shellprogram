@@ -1,0 +1,11 @@
+#!/bin/bash -x
+
+read -p "enter the numbers you want powerOfTwo:"  number
+num=1
+
+while [ $value -le $number ]
+do
+	num=$(($num*2))
+	echo "value--> $value"
+	((value++))
+done
