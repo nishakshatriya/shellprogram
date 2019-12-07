@@ -1,38 +1,57 @@
 #!/bin/bash/ -x
 
 
-for((i=0;i<10;i++))
+num=0
+count=0
+while [[ $count != 10 ]]
 do
-	randomNumber=$((RANDOM%1000))
-	if [[ $randomNumber -gt 100 ]]
-	then
+randomNum=$(( RANDOM%1000 ))
+length=`echo -n $randomNum | wc -c`
 
-
-		randomArray[((i))]=$randomNumber
-	else
-	        i=$(($i-1))
-	fi
-done
-echo "Random number array is --> ${randomArray[@]}"
-
-#length=`echo ${#randomNumberArray[@]}`
-for((j=0;j<10;j++))
-do
-	first=${randomArray[0]}
-	second=${randomArray[0]}
-	if [ ${randomArray[j]} > $first ]
-	then
-		second=$first
-		first=${randomArray[j]}
-
-	elif [[ ${randomArray[j]} -gt $second && ${randomArray[j]} -ne $first ]]
-	then
-		second=${randomArray[j]}
-	fi
+if [ $length == 3 ]
+then
+arr[${num}]=$randomNum
+count=$(($count+1))
+((num++))
+fi
 done
 
-echo $second
+echo ${arr[@]}
 
+arrLength=`echo ${#arr[@]}`
 
+firstLargest=${arr[0]}
+secondLargest=${arr[1]}
 
+for((i=0;i<$arrLength;i++))
+do
+if [ $firstLargest -lt ${arr[$i]} ]
+then
+secondLargest=$firstLargest
+firstLargest=${arr[$i]}
+elif [ $secondLargest -lt ${arr[$i]} ]
+then
+secondLargest=${arr[$i]}
+fi
+done
+
+firstSmallest=${arr[0]}
+firstSmallest=${arr[1]}
+
+for((i=0;i<$arrLength;i++))
+do
+if [ $firstSmallest -gt ${arr[$i]} ]
+then
+secondSmallest=$firstSmallest
+firstSmallest=${arr[$i]}
+elif [ $secondSmallest > ${arr[$i]} ]
+then
+secondSmallest=${arr[$i]}
+fi
+done
+
+echo "firstLargest--> $firstLargest"
+echo "secondLargest--> $secondLargest"
+echo "firstSmallest--> $firstSmallest"
+echo "secondSmallest--> $secondSmallest"
 

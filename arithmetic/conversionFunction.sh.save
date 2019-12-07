@@ -1,0 +1,29 @@
+#!/bin/bash/ -x
+
+function degF
+{
+degToFar=$(( ($degree * 1.8)+32 ) | bc) 
+echo $degToFar 
+}
+
+function degC
+{
+degToCel=$(( ($degree - 32)*1.8 ))
+echo $degToCel | bc
+}
+
+
+read -p "enter the degree:" degree
+read -p "Enter the Conversion required:" choice
+degF=1
+degC=2
+
+case $choice in
+	degF)
+	$result{ degF $degTofar };;
+	degC)
+	$result{ degC $degToCel };;
+	
+
+esac
+echo $result

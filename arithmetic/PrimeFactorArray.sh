@@ -1,29 +1,26 @@
 #!/bin/bash -x
 read -p "Enter the number " number
-prime=0
-
-counter=0
+j=0
 for(( i=2; i<=$number; i++ ))
 do
 
-	if [ $(($number % $i )) -eq 0 ]
-	then 
-        	prime=1
-   		for (( j=2; j<=$i/2; j++ ))
-                do  
-                	if [ $(( $i%$j )) -eq 0 ]
-                        then
-                        	prime=0
-                                break 
-                        fi
-                done
-                	if [ $prime -eq 1 ]
-                        then
-                                output=$(($i))
-				primeArray[((counter++))]]=$output
-                        fi
-        fi
+	while [ $(($number % $i )) -eq 0 ]
+	do
+        	array[j]=$i
+		number=$(($number/$i))
+		if [ $number -eq 0 ]
+		then
+			break
+		fi
+		j=$(($j+1))
+		done
+   		
 done
+if [ $number -gt 2 ]
+then
+	array[j]=$number
+fi
+                	
 
-echo "prime factors array is --->" ${primeArray[@]}
+echo "prime factors array is --->" ${array[@]}
 

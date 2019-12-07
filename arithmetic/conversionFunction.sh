@@ -1,31 +1,29 @@
 #!/bin/bash/ -x
-
-function degF
-{
-degToFar=$(( ($degree * (5/9))+32 ) | bc) 
-echo $degToFar 
-}
-
-function degC
-{
-degToCel=$(( ($degree - 32)* (5/9) ))
-echo $degToCel | bc
-}
-
-
-read -p "enter the degree:" degree
-read -p "Enter the Conversion required:" choice
-degToCel $degree
-degtoFar $degree
 degF=1
 degC=2
-
+read -p "enter the choice:" choice
 case $choice in
-	degF)
-	   result=$( degF );;
-	degC)
-	 result=$( degC );;
-	
-
+	1)
+		read -p "enter the degF value" degToFar
+		value=$(( convertingToFahrenheit $degToFar ))
+		;;
+	2)
+		read -p "enter the degC value" degToCel
+		value=$(( convertingToCelcius $degToCel ))
+		;;
 esac
-echo $result
+
+function convertingToFahrenheit()
+{
+	degF=$1
+	degToFar=$(( $degF * $((9/5)) + 32 ))
+	echo $degToFar
+}
+
+function convertingToCelcius()
+{
+degC=$1
+degToCel=$(($(($degC - 32 )) * $( 5/9 )))
+echo $degToCel
+}
+	
