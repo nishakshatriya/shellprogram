@@ -5,14 +5,14 @@ num=0
 count=0
 while [[ $count != 10 ]]
 do
-randomNum=$(( RANDOM%1000 ))
-length=`echo -n $randomNum | wc -c`
+	randomNum=$(( RANDOM%1000 ))
+	length=`echo -n $randomNum | wc -c`
 
 if [ $length == 3 ]
 then
-arr[${num}]=$randomNum
-count=$(($count+1))
-((num++))
+	arr[${num}]=$randomNum
+	count=$(($count+1))
+	((num++))
 fi
 done
 
@@ -25,13 +25,13 @@ secondLargest=${arr[1]}
 
 for((i=0;i<$arrLength;i++))
 do
-if [ $firstLargest -lt ${arr[$i]} ]
-then
-secondLargest=$firstLargest
-firstLargest=${arr[$i]}
-elif [ $secondLargest -lt ${arr[$i]} ]
-then
-secondLargest=${arr[$i]}
+	if [ $firstLargest -lt ${arr[$i]} ]
+	then
+		secondLargest=$firstLargest
+		firstLargest=${arr[$i]}
+	elif [ $secondLargest -lt ${arr[$i]} ]
+	then
+		secondLargest=${arr[$i]}
 fi
 done
 
@@ -40,13 +40,13 @@ firstSmallest=${arr[1]}
 
 for((i=0;i<$arrLength;i++))
 do
-if [ $firstSmallest -gt ${arr[$i]} ]
-then
-secondSmallest=$firstSmallest
-firstSmallest=${arr[$i]}
-elif [ $secondSmallest > ${arr[$i]} ]
-then
-secondSmallest=${arr[$i]}
+	if [ $firstSmallest -gt ${arr[$i]} ]
+	then
+		secondSmallest=$firstSmallest
+		firstSmallest=${arr[$i]}
+	elif [ $secondSmallest > ${arr[$i]} ]
+	then
+		secondSmallest=${arr[$i]}
 fi
 done
 

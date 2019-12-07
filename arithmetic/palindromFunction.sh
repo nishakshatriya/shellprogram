@@ -2,10 +2,10 @@
 
 function checkingPalindrome()
 {
-local firstNumber=$1
-remainder=0
-sum=0
-temporary=$firstNumber
+	local firstNumber=$1
+	remainder=0
+	sum=0
+	temporary=$firstNumber
 
 while [ $firstNumber -gt 0 ]
 do
@@ -16,9 +16,9 @@ done
 
 if [ $temporary -eq $sum ]
 then 
-echo " Its Palindrome number "
+	echo " Its Palindrome number "
 	else
-echo " Its not Palindrome number "
+	echo " Its not Palindrome number "
 fi
 
 
@@ -30,7 +30,7 @@ checkingPalindrome $firstNumber
 checkingPalindrome $secondNumber
 if [ $firstNumber -eq $secondNumber ]
 then
-echo "FirstNumber  is Palindrome of SecondNumber"
+	echo "FirstNumber  is Palindrome of SecondNumber"
 else
-echo "FirstNumber is not Palindrome of SecondNumber"
+	echo "FirstNumber is not Palindrome of SecondNumber"
 fi 

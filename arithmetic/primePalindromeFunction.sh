@@ -47,8 +47,8 @@ function checkingPalindrome(){
 function main(){
 isPalindrome=$( checkingPalindrome $number )
 isPrime=$( checkingPrime $number )
-echo "the number is..$isPrime"
-echo "the number is..$isPalindrome"
+	echo "the number is..$isPrime"
+	echo "the number is..$isPalindrome"
 }
 main
 
